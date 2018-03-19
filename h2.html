@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>北京地铁路线图绘制</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.5.0/dist/svg-pan-zoom.min.js"></script>
+    <script type="text/javascript" src="final_data.min.js"></script>
+    <script type="text/javascript" src="saveSvgAsPng.min.js"></script>
+    <script type="text/javascript" src="header.min.js"></script>
+    <style>        .wangge {
+        background-image: linear-gradient(90deg, rgba(235, 235, 235, 0.38) 10%, rgba(0, 0, 0, 0) 10%), linear-gradient(rgba(235, 235, 235, 0.38) 10%, rgba(0, 0, 0, 0) 10%);
+        background-size: 17px 17px;
+        width: 600px;
+        height: 300px
+    }</style>
+</head>
+<body>
+<section class="section is-black" style="background-color: black;">
+    <div class="container"><p class="title" style="color: #CDCDCD"> 北京地铁路线图绘制</p>
+        <p class="subtitle" style="color: #CDCDCD"> by : gojuukaze</p></div>
+</section>
+<div style="height: 100%"></div>
+<a href="https://github.com/gojuukaze/BeiJingSubwayFlows">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+</a>
+<section class="section " style="padding: 0 ;">
+    <div class="columns is-gapless">
+        <div id="left" class="column is-narrow ">
+            <div id="select_data" style="padding: 5px"></div>
+            <div style="padding: 10px">
+                <button class="button is-dark" style="width: 43%;margin: 10px" id="add_line" type="button"
+                        value="click"> 添加线路
+                </button>
+                <button class="button is-dark" style="width: 43%;margin: 10px" id="download" type="button"
+                        value="click"> 下载图片
+                </button>
+            </div>
+        </div>
+        <div id="right" class="column" style="border:1px solid black; background-color: white">
+            <div class="wangge" id="container" style="width: 100%; height: 100%; ">
+                <svg id="map" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 3486 1821"
+                     xlink="http://www.w3.org/1999/xlink"></svg>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+<script src="footer.min.js"></script>
+</html>
