@@ -17,8 +17,8 @@ oBtn2.onclick = function () {
     temp.innerHTML = '<svg id="map" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 3486 1821" xlink="http://www.w3.org/1999/xlink">' + svg_data + '</svg>';
 
     var ua = navigator.userAgent;
-    if (ua.indexOf('UCBrowser') > -1 || ua.indexOf('QQBrowser') > -1) {
-        var app = document.getElementById("app");
+    if (ua.indexOf('UCBrowser') > -1 || ua.indexOf('MQQBrowser') > -1) {
+        var app_div = document.getElementById("app");
 
         var div = document.getElementById("img_map");
         if (div == null) {
@@ -32,7 +32,7 @@ oBtn2.onclick = function () {
             img.setAttribute('src', uir);
         });
         div.appendChild(img);
-        app.appendChild(div);
+        app_div.appendChild(div);
 
     }
     else {
