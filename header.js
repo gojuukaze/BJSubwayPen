@@ -3,7 +3,8 @@ line_stations = [];
 select_count = 0;
 svg_data = '';
 init_flag = true;
-
+svg_data2 = '';
+download_type = true;
 for (var i = 0; i < DATA.length; i++) {
     lines.push(DATA[i]['name']);
     var temp = [];
@@ -162,5 +163,13 @@ function flush_svg() {
         center: true,
         zoomScaleSensitivity: 0.6
     });
+
+    var temp_div = document.createElement('div');
+    temp_div.innerHTML = svg.outerHTML;
+    temp_div = temp_div.firstChild;
+    var childs = temp_div.childNodes;
+    for (i = childs.length - 1; i > 0; i--)
+        temp_div.removeChild(childs[i]);
+    svg_data2 = temp_div.outerHTML;
 
 }
