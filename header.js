@@ -1,7 +1,7 @@
 lines = [];
 line_stations = [];
 select_count = 0;
-svg_data = '';
+// svg_data = '';
 init_flag = true;
 svg_data2 = '';
 download_type = true;
@@ -154,7 +154,7 @@ function flush_svg() {
         draw_line(DATA[parseInt(select_line.value)], parseInt(select_start_station.value), parseInt(select_end_station.value));
 
     }
-    svg_data = svg.innerHTML;
+    // svg_data = svg.innerHTML;
 
     zoomSvg = svgPanZoom('#map', {
         zoomEnabled: true,

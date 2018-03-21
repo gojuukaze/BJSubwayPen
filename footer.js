@@ -41,7 +41,7 @@ oBtn2.onclick = function () {
         }
         div.innerHTML = '<div class="notification is-info">图片生成中，完成后需手动保存下面图片：</div>';
         var img = document.createElement("img");
-        svgAsPngUri(temp.firstChild, {'backgroundColor': '#ffffff', scale: 1}, function (uir) {
+        svgAsPngUri(temp.firstChild, {'backgroundColor': '#ffffff', scale: 1.12}, function (uir) {
             img.setAttribute('src', uir);
         });
         div.appendChild(img);
