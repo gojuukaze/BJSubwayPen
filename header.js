@@ -1,10 +1,15 @@
 lines = [];
 line_stations = [];
 select_count = 0;
-// svg_data = '';
+svg_data = '';
 init_flag = true;
 svg_data2 = '';
 download_type = true;
+
+min_x = 3486;
+min_y = 1821;
+max_x = 0;
+max_y = 0;
 for (var i = 0; i < DATA.length; i++) {
     lines.push(DATA[i]['name']);
     var temp = [];
@@ -19,7 +24,6 @@ for (var i = 0; i < DATA.length; i++) {
 function create_select_tag(id, options, mtype, onchange) {
     var style_div = document.createElement("div");
     style_div.setAttribute('class', 'select is-rounded');
-    // set_attr(style_div, 'class', 'select is-rounded is-dark');
 
     var select = document.createElement("select");
 
@@ -28,8 +32,6 @@ function create_select_tag(id, options, mtype, onchange) {
     }
     select.setAttribute('id', id);
     select.setAttribute('mtype', mtype);
-    // set_attr(select, 'id', id);
-    // set_attr(select, 'mtype', mtype);
 
     select.onchange = onchange;
     style_div.appendChild(select);
@@ -45,8 +47,6 @@ function add_select_data() {
     var group_div = document.createElement("div");
     group_div.setAttribute('id', "select_group_" + select_count);
     group_div.setAttribute('style', "margin-bottom: 10px");
-    // set_attr(group_div, 'id', "select_group_" + select_count);
-    // set_attr(group_div, 'style', "margin-bottom: 10px");
 
     var select_line = create_select_tag("select_line_" + select_count, lines, "line", function () {
         var pos = this.value;
@@ -117,6 +117,18 @@ function draw_line(line, start, end) {
         var s = stations[i];
         draw_name_img += s['draw_name'];
         draw_name_img += s['draw_img'];
+        var x=parseInt(s['xy'].split(',')[0]);
+        var y=parseInt(s['xy'].split(',')[1]);
+        if ( x< min_x)
+            min_x = x;
+        if (y < min_y)
+            min_y = y;
+
+        if (x > max_x)
+            max_x = x;
+        if (y > max_y)
+            max_y = y;
+
         if (first) {
             path_data += 'M' + s['xy'];
             first = false;
@@ -154,22 +166,22 @@ function flush_svg() {
         draw_line(DATA[parseInt(select_line.value)], parseInt(select_start_station.value), parseInt(select_end_station.value));
 
     }
-    // svg_data = svg.innerHTML;
+    svg_data = svg.innerHTML;
 
     zoomSvg = svgPanZoom('#map', {
         zoomEnabled: true,
         controlIconsEnabled: true,
         fit: true,
         center: true,
-        zoomScaleSensitivity: 0.6
+        zoomScaleSensitivity: 0.5
     });
 
-    var temp_div = document.createElement('div');
-    temp_div.innerHTML = svg.outerHTML;
-    temp_div = temp_div.firstChild;
-    var childs = temp_div.childNodes;
-    for (i = childs.length - 1; i > 0; i--)
-        temp_div.removeChild(childs[i]);
-    svg_data2 = temp_div.outerHTML;
+    // var temp_div = document.createElement('div');
+    // temp_div.innerHTML = svg.outerHTML;
+    // temp_div = temp_div.firstChild;
+    // var childs = temp_div.childNodes;
+    // for (i = childs.length - 1; i > 0; i--)
+    //     temp_div.removeChild(childs[i]);
+    // svg_data2 = temp_div.outerHTML;
 
 }
