@@ -1,6 +1,8 @@
 # BJSubwayPen
 北京地铁路线图绘制工具
 
+* 关于fina_data是怎获取的，查看： [final_data.js获取说明](https://github.com/gojuukaze/BJSubwayPen/wiki/final_data.js%E8%8E%B7%E5%8F%96%E8%AF%B4%E6%98%8E)
+
 # ex
 https://www.ikaze.cn/sub_pen.html  
 
